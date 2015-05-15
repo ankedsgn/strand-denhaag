@@ -1,6 +1,33 @@
 Changelog
 =========
 
+1.2.4 (2015-04-11)
+------------------
+
+* fixed the exception message when mounting a collection that doesn't return a ControllerCollection
+* fixed Symfony dependencies (Silex 1.2 is not compatible with Symfony 2.7)
+
+1.2.3 (2015-01-20)
+------------------
+
+* fixed remember me listener
+* fixed translation files loading when they do not exist
+* allowed global after middlewares to return responses like route specific ones
+
+1.2.2 (2014-09-26)
+------------------
+
+* fixed Translator locale management
+* added support for the $app argument in application middlewares (to make it consistent with route middlewares)
+* added form.types to the Form provider
+
+1.2.1 (2014-07-01)
+------------------
+
+* added support permissions in the Monolog provider
+* fixed Switfmailer spool where the event dispatcher is different from the other ones
+* fixed locale when changing it on the translator itself
+
 1.2.0 (2014-03-29)
 ------------------
 

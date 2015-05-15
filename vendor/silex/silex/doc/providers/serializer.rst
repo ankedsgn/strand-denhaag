@@ -11,17 +11,17 @@ None.
 Services
 --------
 
-* **serializer**: An instance of `Symfony\Component\Serializer\Serializer
+* **serializer**: An instance of `Symfony\\Component\\Serializer\\Serializer
   <http://api.symfony.com/master/Symfony/Component/Serializer/Serializer.html>`_.
 
-* **serializer.encoders**: `Symfony\Component\Serializer\Encoder\JsonEncoder
+* **serializer.encoders**: `Symfony\\Component\\Serializer\\Encoder\\JsonEncoder
   <http://api.symfony.com/master/Symfony/Component/Serializer/Encoder/JsonEncoder.html>`_
-  and `Symfony\Component\Serializer\Encoder\XmlEncoder
+  and `Symfony\\Component\\Serializer\\Encoder\\XmlEncoder
   <http://api.symfony.com/master/Symfony/Component/Serializer/Encoder/XmlEncoder.html>`_.
 
-* **serializer.normalizers**: `Symfony\Component\Serializer\Normalizer\CustomNormalizer
+* **serializer.normalizers**: `Symfony\\Component\\Serializer\\Normalizer\\CustomNormalizer
   <http://api.symfony.com/master/Symfony/Component/Serializer/Normalizer/CustomNormalizer.html>`_
-  and `Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+  and `Symfony\\Component\\Serializer\\Normalizer\\GetSetMethodNormalizer
   <http://api.symfony.com/master/Symfony/Component/Serializer/Normalizer/GetSetMethodNormalizer.html>`_.
 
 Registering
@@ -36,14 +36,11 @@ Registering
     The *SerializerServiceProvider* relies on Symfony's `Serializer Component
     <http://symfony.com/doc/current/components/serializer.html>`_, 
     which comes with the "fat" Silex archive but not with the regular
-    one. If you are using Composer, add it as a dependency to your
-    ``composer.json`` file:
+    one. If you are using Composer, add it as a dependency:
 
-    .. code-block:: json
+    .. code-block:: bash
 
-        "require": {
-            "symfony/serializer": ">=2.3,<2.5-dev",
-         }
+        composer require symfony/serializer
 
 Usage
 -----

@@ -14,7 +14,7 @@ namespace Symfony\Component\Form\Extension\Core\DataTransformer;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
- * Transforms between a timestamp and a DateTime object
+ * Transforms between a timestamp and a DateTime object.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
  * @author Florian Eckerstorfer <florian@eckerstorfer.org>
@@ -26,7 +26,7 @@ class DateTimeToTimestampTransformer extends BaseDateTimeTransformer
      *
      * @param \DateTime $value A \DateTime object
      *
-     * @return int     A timestamp
+     * @return int A timestamp
      *
      * @throws TransformationFailedException If the given value is not an instance
      *                                       of \DateTime or if the output
@@ -53,7 +53,7 @@ class DateTimeToTimestampTransformer extends BaseDateTimeTransformer
     }
 
     /**
-     * Transforms a timestamp in the configured timezone into a DateTime object
+     * Transforms a timestamp in the configured timezone into a DateTime object.
      *
      * @param string $value A timestamp
      *

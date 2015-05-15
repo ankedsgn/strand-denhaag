@@ -47,6 +47,10 @@ class FormServiceProvider implements ServiceProviderInterface
 
         $app['form.secret'] = md5(__DIR__);
 
+        $app['form.types'] = $app->share(function ($app) {
+            return array();
+        });
+
         $app['form.type.extensions'] = $app->share(function ($app) {
             return array();
         });
@@ -74,7 +78,10 @@ class FormServiceProvider implements ServiceProviderInterface
 
                 if (isset($app['translator'])) {
                     $r = new \ReflectionClass('Symfony\Component\Form\Form');
-                    $app['translator']->addResource('xliff', dirname($r->getFilename()).'/Resources/translations/validators.'.$app['locale'].'.xlf', $app['locale'], 'validators');
+                    $file = dirname($r->getFilename()).'/Resources/translations/validators.'.$app['locale'].'.xlf';
+                    if (file_exists($file)) {
+                        $app['translator']->addResource('xliff', $file, $app['locale'], 'validators');
+                    }
                 }
             }
 
@@ -84,13 +91,14 @@ class FormServiceProvider implements ServiceProviderInterface
         $app['form.factory'] = $app->share(function ($app) {
             return Forms::createFormFactoryBuilder()
                 ->addExtensions($app['form.extensions'])
+                ->addTypes($app['form.types'])
                 ->addTypeExtensions($app['form.type.extensions'])
                 ->addTypeGuessers($app['form.type.guessers'])
                 ->setResolvedTypeFactory($app['form.resolved_type_factory'])
                 ->getFormFactory()
             ;
         });
-        
+
         $app['form.resolved_type_factory'] = $app->share(function ($app) {
             return new ResolvedFormTypeFactory();
         });

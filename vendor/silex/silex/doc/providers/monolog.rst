@@ -12,8 +12,10 @@ Parameters
 ----------
 
 * **monolog.logfile**: File where logs are written to.
+* **monolog.bubble** = (optional) Whether the messages that are handled can bubble up the stack or not.
+* **monolog.permission** = (optional) File permissions default (null), nothing change.
 
-* **monolog.level** (optional): Level of logging defaults
+* **monolog.level** (optional): Level of logging, defaults
   to ``DEBUG``. Must be one of ``Logger::DEBUG``, ``Logger::INFO``,
   ``Logger::WARNING``, ``Logger::ERROR``. ``DEBUG`` will log
   everything, ``INFO`` will log everything except ``DEBUG``,
@@ -49,14 +51,11 @@ Registering
 .. note::
 
     Monolog comes with the "fat" Silex archive but not with the regular one.
-    If you are using Composer, add it as a dependency to your
-    ``composer.json`` file:
+    If you are using Composer, add it as a dependency:
 
-    .. code-block:: json
+    .. code-block:: bash
 
-        "require": {
-            "monolog/monolog": ">=1.0.0"
-        }
+        composer require monolog/monolog
 
 Usage
 -----

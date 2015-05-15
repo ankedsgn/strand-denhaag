@@ -55,14 +55,11 @@ Registering
 .. note::
 
     The Symfony Security Component comes with the "fat" Silex archive but not
-    with the regular one. If you are using Composer, add it as a dependency to
-    your ``composer.json`` file:
+    with the regular one. If you are using Composer, add it as a dependency:
 
-    .. code-block:: json
+    .. code-block:: bash
 
-        "require": {
-            "symfony/security": "~2.3"
-        }
+        composer require symfony/security
 
 .. caution::
 
@@ -157,6 +154,19 @@ generate a valid encoded password from a raw password, use the
 When the user is authenticated, the user stored in the token is an instance of
 `User
 <http://api.symfony.com/master/Symfony/Component/Security/Core/User/User.html>`_
+
+.. caution::
+
+    If you are using php-cgi under Apache, you need to add this configuration
+    to make things work correctly:
+
+    .. code-block:: apache
+
+        RewriteEngine On
+        RewriteCond %{HTTP:Authorization} ^(.+)$
+        RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^(.*)$ app.php [QSA,L]
 
 Securing a Path with a Form
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~

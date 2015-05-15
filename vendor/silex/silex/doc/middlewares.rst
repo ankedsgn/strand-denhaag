@@ -20,7 +20,7 @@ Before Middleware
 A *before* application middleware allows you to tweak the Request before the
 controller is executed::
 
-    $app->before(function (Request $request) {
+    $app->before(function (Request $request, Application $app) {
         // ...
     });
 
@@ -30,7 +30,7 @@ If you want your middleware to be run even if an exception is thrown early on
 (on a 404 or 403 error for instance), then, you need to register it as an
 early event::
 
-    $app->before(function (Request $request) {
+    $app->before(function (Request $request, Application $app) {
         // ...
     }, Application::EARLY_EVENT);
 
@@ -147,7 +147,7 @@ Short-circuiting the Controller
 -------------------------------
 
 If a before middleware returns a Response object, the Request handling is
-short-circuited (the next middlewares won't be run, neither the route
+short-circuited (the next middlewares won't be run, nor the route
 callback), and the Response is passed to the after middlewares right away::
 
     $app->before(function (Request $request) {

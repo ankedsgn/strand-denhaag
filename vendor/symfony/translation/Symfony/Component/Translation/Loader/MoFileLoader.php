@@ -18,7 +18,7 @@ use Symfony\Component\Config\Resource\FileResource;
 /**
  * @copyright Copyright (c) 2010, Union of RAD http://union-of-rad.org (http://lithify.me/)
  */
-class MoFileLoader extends ArrayLoader implements LoaderInterface
+class MoFileLoader extends ArrayLoader
 {
     /**
      * Magic used for validating the format of a MO file as well as
@@ -39,7 +39,7 @@ class MoFileLoader extends ArrayLoader implements LoaderInterface
     /**
      * The size of the header of a MO file in bytes.
      *
-     * @var int     Number of bytes.
+     * @var int Number of bytes.
      */
     const MO_HEADER_SIZE = 28;
 
@@ -78,6 +78,7 @@ class MoFileLoader extends ArrayLoader implements LoaderInterface
      * @param resource $resource
      *
      * @return array
+     *
      * @throws InvalidResourceException If stream content has an invalid format.
      */
     private function parse($resource)
@@ -87,7 +88,7 @@ class MoFileLoader extends ArrayLoader implements LoaderInterface
         $stat = fstat($stream);
 
         if ($stat['size'] < self::MO_HEADER_SIZE) {
-            throw new InvalidResourceException("MO stream content has an invalid format.");
+            throw new InvalidResourceException('MO stream content has an invalid format.');
         }
         $magic = unpack('V1', fread($stream, 4));
         $magic = hexdec(substr(dechex(current($magic)), -8));
@@ -97,7 +98,7 @@ class MoFileLoader extends ArrayLoader implements LoaderInterface
         } elseif ($magic == self::MO_BIG_ENDIAN_MAGIC) {
             $isBigEndian = true;
         } else {
-            throw new InvalidResourceException("MO stream content has an invalid format.");
+            throw new InvalidResourceException('MO stream content has an invalid format.');
         }
 
         // formatRevision
@@ -136,6 +137,10 @@ class MoFileLoader extends ArrayLoader implements LoaderInterface
             $length = $this->readLong($stream, $isBigEndian);
             $offset = $this->readLong($stream, $isBigEndian);
 
+            if ($length < 1) {
+                continue;
+            }
+
             fseek($stream, $offset);
             $translated = fread($stream, $length);
 
@@ -168,8 +173,9 @@ class MoFileLoader extends ArrayLoader implements LoaderInterface
     /**
      * Reads an unsigned long from stream respecting endianess.
      *
-     * @param  resource $stream
-     * @param  bool     $isBigEndian
+     * @param resource $stream
+     * @param bool     $isBigEndian
+     *
      * @return int
      */
     private function readLong($stream, $isBigEndian)
