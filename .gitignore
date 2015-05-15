@@ -8,3 +8,4 @@ app/cache
 app/database
 config_local.yml
 ._*
+/google*.html
