@@ -1,0 +1,122 @@
+{% include '_header.twig' with {'bodyclass':'body-strandtent'} %}
+
+{% set strandslag = record.related()|first %}
+
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			<div class="strandnav">
+						
+			</div>
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+
+	
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			<div class="strandheader">
+				
+				<h1><span class="subheader">Strandtent</span><br/>{{ record.title }}</h1>
+				<div class="row intro-row">
+					<div class="large-5 columns intro-image">
+						<img src="{{ thumbnail(record.image, 340, 250,'c') }}" alt="{{ record.imagedescription }}" title="{{ record.title }}" />
+					</div>
+					<div class="large-7 columns intro">
+						{{ record.description }}
+						<div class="tent-contact">
+							Telefoon: <a href="tel:{{ record.phone }}">{{ record.phone }}</a><br />
+							{% if strandtent.website !="" %} 
+								Website: <a target="_blank" href="{{ strandtent.website }}">{{ strandtent.website | slice(7,100) }}</a>
+							{% endif %} 
+							{% if record.iens!="" %}| <a href="{{ record.iens }}" target="_blank">Bekijk op iens</a>{% endif %}
+        				</div>
+        				<div class="tent-flags">
+	        				{% if record.taxonomy.services is defined %}
+								{% for service in record.taxonomy.services %}
+									{{ service }}{% if not loop.last %} | {% endif %}
+								{% endfor %}
+							{% endif %}       				
+	        			</div>
+					</div>				
+				</div>	<!-- /intro-row -->
+			
+			</div>
+			
+			<h2>{{ strandslag.title }}</h2><h3 class="subheader">{{ strandslag.name }}</h3>
+			<div class="intro strandintro">{{ strandslag.description }}</div>
+						
+			
+			{% if strandslag.kinderen is not empty %}
+			<div class="content-block kinderen-block">		
+				<h3>Met de kinderen naar {{ record.title }}</h3>
+				{{ strandslag.kinderen }}
+			</div>
+			{% endif %}
+						
+			<div class="content-block honden-block">		
+				<h3>Honden {% if strandslag.hondenstrand == "Ja" %} <span class="round regular label">Hondenstrand!</span>{% endif %}</h3>
+				{{ strandslag.hondenstrand_text }}
+			</div>
+			
+			<div class="content-block naakt-block">	
+				<h3>Naaktrecreatie{% if strandslag.naaktstrand == "Ja" %} <span class="round regular label">Naaktstrand!</span>{% endif %}</h3>
+				{{ strandslag.naaktstrand_text }}
+			</div>
+			
+			{% if strandslag.sport is not empty %}
+			<div class="content-block sport-block">		
+				<h3>Sport</h3>
+				{{ strandslag.sport }}
+			</div>
+			{% endif %}
+					
+	
+		</div>
+
+		<div class="large-4 columns side-col">
+			
+			<div class="side-block weather-block">
+			<!-- het weerbericht, met Jan Pelleboer -->
+			{% include '_seatemp.twig' %}
+			{% include '_weather.twig' %}
+			<!-- einde van dit bulletin. -->
+			</div>
+			
+			<div class="side-block map-block">
+				<img src="http://maps.googleapis.com/maps/api/staticmap?center={{ record.geolocation.latitude }},{{ record.geolocation.longitude }}&zoom=14&size=287x180&sensor=false&markers={{ record.geolocation.latitude }},{{ record.geolocation.longitude }}">
+			</div>
+			
+			<div id="parkeren-ov" class="side-block ov-block">
+				<h3 class="subheader">Openbaar vervoer naar {{strandslag.title}}</h3>
+				<p>
+				{{ strandslag.openbaar_vervoer }}
+				</p>
+			</div>
+		
+			<div class="side-block parkeer-block">
+				<h3 class="subheader">Parkeren bij {{strandslag.title}}</h3>
+				<p>
+				{{ strandslag.parkeren }}
+				</p>
+			</div>
+
+
+			<!-- Include small ads for devices -->
+			{% include '_small_adblock.twig' %}
+
+			<!-- Include Tweets -->
+			{# % include '_twitterlist.twig' % #}
+			
+		</div>
+</div>	
+	
+<!-- End Main Content -->
+
+    
+	{% include '_footer.twig' %}

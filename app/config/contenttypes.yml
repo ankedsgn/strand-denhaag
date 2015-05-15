@@ -1,0 +1,236 @@
+# This file defines the contenttypes on the website. See the documentation for
+# details: http://docs.bolt.cm/content#defining-contenttypes
+
+
+# Entries can be used for things like 'news' or 'blogpostings'. They have a 'teaser',
+# which can be used for a short blurb on listing-pages, allowing visitors to
+# click-through to the rest of the entry. It also has fields for an image and an
+# optional video.
+# A relation is defined to the pages contenttype. This way you can refer to a page
+# from your news-item.
+# This contenttype defines 'categories' and 'tags' as taxonomies, allowing the
+# editor to use both to categorize a specifig entry.
+# The 'sort' is set to "datepublish DESC", which means that newer entries will
+# show above older entries.
+
+strandtenten:
+    name: Strandtenten
+    singular_name: Strandtent
+    fields:        
+        title:
+            type: text
+            label: Strandtent
+            class: large
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+            label: Foto
+        adress:
+            type: text
+            label: Adres
+        phone:
+            type: text
+            label: Telefoon
+        website:
+            type: text
+            label: Website
+        geolocation:
+            type: geolocation
+            label: Geolocatie
+        description:
+            type: html
+            label: Korte omschrijving
+        image: 
+            type: image
+        iens:
+            type: text
+            label: Link naar Iens pagina        
+    template: strandtent.twig
+    taxonomy: [ services ]
+    sort: title
+    relations:
+        strandslagen:
+            multiple: false
+            label: Kies een strandslag
+            order: -id
+    recordsperpage: 100
+    show_on_dashboard: true
+#
+#
+strandslagen:
+    name: Strandslagen
+    singular_name: Strandslag
+    fields:        
+        title:
+            type: text
+            label: Titel
+            class: large
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+            label: Foto
+        #name:
+        #    type: text
+        #   label: Omschrijving
+        geolocation:
+            type: geolocation
+            label: Geolocatie
+        description:
+            type: html
+            label: Omschrijving strandslag
+        openbaar_vervoer:
+            type: html
+            label: Omschrijving openbaar vervoer
+        parkeren:
+            type: html
+            label: Omschrijving parkeren
+        sport:
+            type: html
+            label: Omschrijving sport
+        kinderen:
+            type: html
+            label: Omschrijving kinderen
+        hondenstrand:
+            type: select
+            values: [ Ja, Nee ]
+        hondenstrand_text:
+            type: html
+            label: Omschrijving hondenstrand
+        surfstrand:
+            type: select
+            label: Surfen?
+            values: [ Ja, Nee ]
+        surfstrand_text:
+            type: html
+            label: Omschrijving surfstrand
+        naaktstrand:
+            type: select
+            values: [ Ja, Nee ]
+        naaktstrand_text:
+            type: html
+            label: Korte omschrijving naaktstrand
+        template:
+            type: templateselect
+            filter: '*.twig'
+    taxonomy: [ chapters ]
+    sort: title
+    recordsperpage: 100
+    show_on_dashboard: true
+#
+#
+evenementen:
+    name: Evenementen
+    singular_name: Evenement
+    fields:        
+        title:
+            type: text
+            class: large
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+        name:
+            type: text
+        datum:
+            type: date
+            label: Datum evenement
+        geolocation:
+            type: geolocation
+            label: Geolocatie
+        description:
+            type: html
+            label: Korte omschrijving
+        image: 
+            type: image
+        template:
+            type: templateselect
+            filter: '*.twig'
+#    taxonomy: [ chapters ]
+    relations:
+        strandtenten:
+            multiple: true
+            label: Kies een strandtent
+            order: -id
+        strandslagen:
+            multiple: pages
+            order: title
+            label: Kies een strandslag
+            order: -id
+    sort: title
+    recordsperpage: 100
+    show_on_dashboard: true
+    
+overzichten:
+    name: Overzichten
+    singular_name: Overzicht
+    fields:        
+        title:
+            type: text
+            class: large
+        slug:
+            type: slug
+            uses: title
+        subtitle:
+            type: text
+        image: 
+            type: image
+        description:
+            type: html
+            label: Korte omschrijving
+        body:
+            type: html
+            label: Lange omschrijving
+        template:
+            type: templateselect
+            filter: '*.twig'
+    template: overzicht.twig
+    sort: title
+    recordsperpage: 100
+    show_on_dashboard: true    
+
+
+paginas:
+    name: Paginas
+    singular_name: Pagina
+    fields:
+        title:
+            type: text
+            class: large
+        slug:
+            type: slug
+            uses: title
+        image:
+            type: image
+            label: beeld
+        imagedescription:
+            type: text
+        description:
+            type: html
+            height: 150px
+        body:
+            type: html
+            height: 300px
+    taxonomy: [ chapters ]
+    recordsperpage: 100
+
+
+# possible field types:
+# text - varchar(256) - input type text.
+# integer - integer - Input field for integer numbers.
+# float - double - Input field for floating numbers, stored as 'Double'.
+# geolocation - text (65kb) - Input field for geolocation. Enter an address, and the location is geocoded to latitude/longitude coordinates
+# imagelist - text (65kb) - Input type for imagelists. Add multiple images with a description. Useful for image sliders, galleries, etcetera.
+# image - varchar(256) - image select/upload widget, stored as filename.
+# file - varchar(256) - file select/upload widget, stored as filename.
+# video - varchar(256) - Video embed widget, stored as filename.
+# html - text (65kb) - wysiwyg element.
+# textarea - varchar(32768) - Simple, plain < textarea > field.
+# datetime - datetime - date and time selector widget.
+# date - datetime - date selector widget.
+# select - varchar(256) - select with predefined values
+# templateselect - varchar(256) - select with template filenames

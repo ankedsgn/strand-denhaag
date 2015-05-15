@@ -1,0 +1,151 @@
+{% include '_header.twig' with {'bodyclass' : 'body-strandslag'} %}
+	
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			<div class="strandnav">
+			
+			{% set previous = record.previous('id') %}
+            {% if previous %}
+				<a href="{{ previous.link }}" class="prev">{{ previous.title }} &raquo; </a> 
+			{% endif %}
+			
+			{% set next = record.next('id') %}
+            {% if next %}
+				<a href="{{ next.link }}" class="next">&laquo; {{ next.title }} </a> 
+			{% endif %}
+			
+			</div>
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			<div class="strandheader">
+				<h1>{{ record.title }}<span class="subheader">{{ record.name }}</span></h1>
+				{% if record.naaktstrand == "Ja" %}
+				<span class="regular round label">Naaktstrand</span>
+				{% endif %}
+				
+				{% if record.hondenstrand == "Ja" %} 
+				<span class="regular round label">Hondenstrand</span>
+				{% endif %}	
+			</div>
+			
+			<!-- div class="row mobile-nav-row show-for-small"> <!-- alleen tonen  op kleiner dan 560 -->
+				<!--div class="large-12 columns">
+					<ul class="mobile-nav">
+						<li><a class="button radius expand" href="#strandtenten">Strandtenten</a></li>
+						<li><a class="button radius expand" href="#parkeren-ov">Parkeren en OV</a></li>
+					</ul>
+				</div>
+			</div -->
+	
+			<div class="smallmap">
+				<!-- img src="http://maps.googleapis.com/maps/api/staticmap?center={{ record.geolocation.latitude }},{{ record.geolocation.longitude }}&zoom=14&size=650x280&sensor=false&markers={{ record.geolocation.latitude }},{{ record.geolocation.longitude }}" -->
+				<iframe width="632" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&hl=nl&t=h&msa=0&msid=105670867418953582291.000484b16d0470629a70d&ll={{ record.geolocation.latitude }},{{ record.geolocation.longitude }}&spn=0.003293,0.01354&z=16&output=embed"></iframe>
+					 	
+			</div>
+			
+			<div class="intro strandintro">{{ record.description }}</div>
+			
+			<div id="strandtenten" class="content-block strandtent-block">
+				<h3>Strandtenten</h3>
+				
+				{% set relatedrecords = record.related() %}
+				{% if relatedrecords is not empty %}
+				<ul class="strandtenten">
+					{% for related in relatedrecords %}
+    				<li>
+        				<h4>{{ related.title }}</h4> 
+        				<div class="tent-contact">
+							<a href="tel:{{ related.phone }}">{{ related.phone }}</a> | <a target="_blank" href="{{ related.website }}">{{ related.website | slice(7,100) }}</a> 
+							{% if related.iens!="" %}| <a href="{{ related.iens }}" target="_blank">Bekijk op iens</a>{% endif %}
+        				</div>
+        				<div class="tent-description">
+        					{{ related.description }}
+        				</div>
+        				<div class="tent-flags">
+        				{% if related.taxonomy.services is defined %}
+							{% for service in related.taxonomy.services %}
+								{{ service }}{% if not loop.last %} | {% endif %}
+							{% endfor %}
+						{% endif %}       				
+        				</div>
+    				</li>
+				{%  endfor %}
+				</ul>
+				{% endif %}
+			 </div>			
+			
+			{% if record.kinderen is not empty %}
+			<div class="content-block kinderen-block">		
+				<h3>Met de kinderen naar {{ record.title }}</h3>
+				{{ record.kinderen }}
+			</div>
+			{% endif %}
+			
+			<div class="content-block honden-block">		
+				<h3>Honden {% if record.hondenstrand == "Ja" %} <span class="round regular label">Hondenstrand!</span>{% endif %}</h3>
+				{{ record.hondenstrand_text }}
+			</div>
+			
+			<div class="content-block naakt-block">	
+				<h3>Naaktrecreatie{% if record.naaktstrand == "Ja" %} <span class="round regular label">Naaktstrand!</span>{% endif %}</h3>
+				
+				{{ record.naaktstrand_text }}
+			</div>
+			
+			{% if record.sport is not empty %}
+			<div class="content-block sport-block">		
+				<h3>Sport</h3>
+				{{ record.sport }}
+			</div>
+			{% endif %}	
+		</div>
+		
+		<div class="large-4 columns side-col">
+			
+			<div class="side-block weather-block">
+			<!-- het weerbericht, met Jan Pelleboer -->
+			{% include '_seatemp.twig' %}
+			{% include '_weather.twig' %}
+			<!-- einde van dit bulletin. -->
+			</div>
+			
+			<div class="side-block img-block">
+				<img src="{{ thumbnail(record.image, 287, 500,'r') }}" alt="{{ record.title }}" title="{{ record.title }}" />
+			</div>
+			
+			<div id="parkeren-ov" class="side-block ov-block">
+				<h3 class="subheader">Openbaar vervoer</h3>
+				<p>
+				{{ record.openbaar_vervoer }}
+				</p>
+			</div>
+		
+			<div class="side-block parkeer-block">
+				<h3 class="subheader">Parkeren</h3>
+				<p>
+				{{ record.parkeren }}
+				</p>
+			</div>
+
+			<!-- Include small ads for devices -->
+			{% include '_small_adblock.twig' %}
+
+			<!-- Include Tweets -->
+			{# % include '_twitterlist.twig' % #}
+			
+		</div>
+</div>	
+	
+<!-- End Main Content -->
+
+    
+	{% include '_footer.twig' %}

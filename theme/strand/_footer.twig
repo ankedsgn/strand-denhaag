@@ -1,0 +1,43 @@
+<div id="footer" class="row footer-row">
+	<div class="large-12 columns footer-col">
+		<h5><span><strong>STRAND</strong>Den Haag</span> <!-- br />is een uit de hand gelopen hobbyproject van Anke Willems --></h5>
+		<p>Tips en suggesties zijn altijd welkom!
+		<a href="mailto:tips@strand-denhaag.nl">tips@strand-denhaag.nl</a></p>
+	</div>
+</div>
+<div class="row footer-bottom-row">
+	<div class="large-12 columns footer-col"></div>
+</div> 
+
+<!-- /container -->
+  
+  
+  
+  <script type="text/javascript" src="http://www.sea-temperature.com/id/417"></script>
+  
+   
+  <script src="{{ paths.theme }}scripts/foundation/foundation.js"></script>
+  <!-- script src="{{ paths.theme }}scripts/foundation/foundation.min.js"></script -->
+  <script src="{{ paths.theme }}scripts/foundation/foundation.topbar.js"></script>
+   <script src="{{ paths.theme }}scripts/jquery.simpleWeather.js"></script>
+  
+    
+  <script>
+    $(document).foundation();
+  </script>
+
+{% if paths.canonical =="strand-denhaag.nl" %}  {# TODO:CHECK! #}
+<!-- GA -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-5849686-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% include '_header.twig' %}
+	
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<h1>{{ record.title }}
+			<span class="subheader">{{ record.name }}</span>
+		</h1>
+		
+		{{ record.description }}
+		
+		{{ record.body }}
+		
+		
+		
+		 
+		
+		
+	</div>	
+	
+<!-- End Main Content -->
+
+    {% include '_footer.twig' %}

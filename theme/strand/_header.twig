@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<title>
+      {% if record.title is defined %}{{ record.title|striptags }} | {% endif %}
+      {{ app.config.get('general/sitename') }}
+      {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif %}
+    </title>
+	
+	<meta name="description" content="Handige info over het strand: {{record.title}}, {{record.name}}. Waar parkeren, welke strandtenten zijn er, etc. Alle info voor een dagje uit op het haagse strand!" />
+	
+	
+	<link rel="stylesheet" href="{{ paths.theme }}styles/normalize.css" />
+	<link rel="stylesheet" href="{{ paths.theme }}styles/foundation.css" />
+	<link rel="stylesheet" href="{{ paths.theme }}styles/strand.css" />
+  
+	<script src="{{ paths.theme }}scripts/vendor/custom.modernizr.js"></script>
+	<script src="{{ paths.theme }}scripts/jquery-1.9.1.min.js"></script>	
+	<script src="{{ paths.theme }}scripts/strand.js"></script>
+</head>
+
+<!-- Main Page Content and Sidebar -->
+
+<body class="{{bodyclass}}">
+
+	<div class="container">
+		<div class="row logo-row">
+			<div class="large-6 columns">
+				<div id="logo">
+					<h2><a href="/">STRAND<span>Den Haag</span></a></h2>
+					<p>{{ app.config.get('general/payoff') }}</p>
+				</div>
+			</div>
+			<div class="large-6 columns banner-block hide-for-small">
+				{% include '_leaderboard.twig' %}
+			</div>
+		</div>
+		<div class="row nav-row">
+			<nav class="top-bar">
+				<ul class="title-area">
+				    <li class="name"><!-- Leave this empty --></li>
+				    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+				</ul>
+				<section class="top-bar-section">
+					
+					{{ menu('main', '_sub_menu.twig') }}
+					
+			  </section>
+			</nav>
+		</div>

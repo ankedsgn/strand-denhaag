@@ -1,0 +1,9 @@
+
+    
+    <div class="searchbox">
+        <form method="get" action="{{ paths.root }}search" id="searchform" enctype="text/plain">
+            <input type="search" class="large-9 small-9" name="search" value="{{ app.request.get('search') }}" placeholder="Zoek">
+            <input type="submit" class="large-2 small-2" name="submit" value="zoek">
+        </form>
+    </div>
+    

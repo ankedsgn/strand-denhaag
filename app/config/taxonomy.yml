@@ -1,0 +1,19 @@
+tags:
+    slug: tags
+    singular_slug: tag
+    behaves_like: tags
+
+chapters:
+    slug: chapters
+    singular_slug: chapter
+    behaves_like: grouping
+    options: [ strandslag, strandtent, evenement, overzicht ]
+    order: true
+
+services:
+    name: Services
+    singular_name: Services
+    singular_slug: services
+    behaves_like: categories
+    multiple: true
+    options: { Wifi: "Wifi", Speeltuin: "Speeltuin", Parasol: "Parasol verhuur", Ligbed: "Ligbed verhuur", Buitendouche: "Buitendouche", Winkel: "Winkel", Tehuur: "Verhuur mogelijk", Muziek: "Live muziek", Volleybalnet: "Volleybalnet", Verhardpad: "Verhard pad", Snackbar: "Snackbar", Restaurant: "Restaurant", Loungebedden: "Loungebedden" }

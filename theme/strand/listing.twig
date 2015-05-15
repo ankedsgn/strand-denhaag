@@ -1,0 +1,100 @@
+{% include '_header.twig' %}
+	
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			{# This is also the default template for searchresults. If 'search' is defined,
+           we display an appropriate title. The 'records' array contains all of the
+           records matching the current query. If there are no results, the
+           code in the 'else' part of the for-loop is used. #}
+        {% if search is defined %}
+            <h3>
+                {{ records|length }} resultaten gevonden voor: <span>{{ search|escape  }}</span>
+            </h3>
+        {% endif %}
+
+			<ul class="contentlist searchresults">
+        {% for record in records %}
+            <li>
+
+                <h3><a href="{{ record.link }}">{{ record.title }} <span class="subheader">{{ record.contenttype.singular_name }}</span></a></h3>
+
+                {# display something introduction-like.. #}
+                {% if record.introduction %}
+                    {{ record.introduction }}
+                {% elseif record.teaser %}
+                    {{ record.teaser }}
+                {% else %}
+                    <p>{{ record.excerpt(200) }}</p>
+                {% endif %}
+
+			</li>
+
+            
+        {% else %}
+            <li>
+
+				{% if search is defined %}
+
+                    <p>
+                        Geen resultaten voor <strong>{{ search|escape }}</strong>. Probeer eens ergens anders naar te zoeken!
+                    </p>
+
+                {% else %}
+
+                    <h2>Geen resultaten</h2>
+
+                    <p>
+                        Unfortunately, no content could be found. Try another page, or go to the
+                        <a href="{{ paths.root }}">homepage</a>.
+                    </p>
+
+                {% endif %}
+
+                {#
+                optionally, you can redirect the browser to another page. Just uncomment the next line to do so.
+                {{ redirect('/') }}
+                #}
+
+            </li>
+        {% endfor %}
+		</ul>
+		
+        {# If there are more records than will fit on one page, the pager is shown. #}
+        {{ pager() }}
+        
+		</div>
+		
+		<div class="large-4 columns side-col">
+			
+			<div class="side-block weather-block">
+			<!-- het weerbericht, met Jan Pelleboer -->
+			{% include '_seatemp.twig' %}
+			{% include '_weather.twig' %}
+			<!-- einde van dit bulletin. -->
+			</div>
+			
+			
+			<!-- Include small ads for devices -->
+			{% include '_small_adblock.twig' %}
+
+			<!-- Include Tweets -->
+			{# % include '_twitterlist.twig' % #}
+			
+		</div>
+</div>	
+	
+<!-- End Main Content -->
+
+    {% include '_footer.twig' %}

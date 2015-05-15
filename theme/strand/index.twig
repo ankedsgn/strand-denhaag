@@ -1,0 +1,104 @@
+{% include '_header.twig' with { 'bodyclass' : 'body-home' } %}
+{% setcontent homepage = 'pagina/homepage' %}
+
+<!-- Main Page Content and Sidebar -->
+
+<!-- Main Blog Content -->
+
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			<h1 class="sitename">Strand <span>Den&nbsp;Haag</span></h1>
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			<div class="row intro-row">
+				<div class="large-5 columns intro-image">
+					<img src="{{ thumbnail(homepage.image, 700, 500,'c') }}" alt="{{ homepage.imagedescription }}" title="{{ homepage.imagedescription }}" />
+				</div>
+				<div class="large-7 columns intro">{{ homepage.description }}
+					<ul class="homelinks">
+						<li><a href="/overzicht/strandslagen">Bekijk alle strandslagen</a></li>
+						<li><a href="/overzicht/strandtenten">Bekijk alle strandtenten</a></li>
+						<li><a href="/pagina/kaart-van-het-strand-van-den-haag">Bekijk een kaart van het strand</a></li>
+					</ul>
+				</div>				
+			</div>	<!-- /intro-row -->
+			
+			<h2>Alle strandopgangen van Den Haag en Scheveningen</h2>
+				{% setcontent stranden = 'strandslagen' orderby 'id' %}
+			
+			<ul class="block-grid strandtenten-grid large-block-grid-3">
+			
+			{% for strand in stranden %}
+				<li class="strandtent-item {% for service in strandtent.taxonomy.services %}{{ service|lower|replace({' ':'-' }) }} {% endfor %}">
+    				<a href="{{ strand.link }}">
+    					<img src="{{ thumbnail(strand.image, 199, 140) }}" alt="{{ strand.title }}" title="{{ strand.title }}" />
+    				</a>
+    				{% if strand.hondenstrand=="Ja" %}
+    					<span class="regular round label">Hondenstrand</span>
+    				{% elseif strand.naaktstrand=="Ja" %}
+    					<span class="regular round label">Naaktstrand</span>
+    				{% endif %}
+    				
+    				<h3><a href="{{ strand.link }}">{{ strand.title }}</a></h3> 
+    				<h4><a href="{{ strand.link}}">{{ strand.name }}</a></h4>
+    				
+    				
+    				<div class="decription">{{ strand.description | striptags | slice(0,150) }} &hellip;
+        				<div><a class="readmore" href="{{ strand.link}}">Lees meer</a></div>
+    				</div>
+				</li>
+			{%  endfor %}
+			</ul>
+			
+						
+		</div>
+		<div class="large-4 columns side-col">
+			
+			{% setcontent events = 'evenementen' orderby 'datum' limit 5 where { datum: '>TODAY' } %}
+			{% if events is not empty %}	
+			<div class="side-block event-block">
+				<h3>Is er wat leuks te doen?</h3>
+				<ul class="contentlist">
+					{% for item in events %}
+					<li>
+						<h4>{{item.title}}</h4>
+						<p class="date">{{item.datum|localdate("%A %e %B %Y")}}</p>
+						{% set locations = item.related() %}
+						{% for locatie in locations %}
+						<span class="where">{{ locatie.title }}{%if not loop.last %},{% endif %}</span>
+						{% endfor %}
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+			
+			<div class="side-block kaart-block">
+				<h3 class="subheader">Bekijk de kaart van het strand</h3>
+				<a href="/pagina/kaart-van-het-strand-van-den-haag">
+					<img class="fullwidth" src="{{paths.theme}}images/strandkaart.jpg" alt="strandkaart" title="Klik!" width="525" height="251" />
+					Klik door voor de hele overzichtskaart
+				</a>
+			</div>
+
+
+			<!-- Include small ads for devices -->
+			
+			{% include '_small_adblock.twig' %}
+			<!-- Include Tweets -->
+			
+			{% include '_twitterlist.twig' %}
+			
+		</div>
+	</div><!-- /main-row -->	
+	
+	{% include '_footer.twig' %}

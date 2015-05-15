@@ -1,0 +1,61 @@
+		{% include '_header.twig' %}
+	
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			<h3>Strandslagen</h3>
+			{% setcontent strandslagen ='strandslagen' orderby '-id' %}				
+		
+			<ul class="contentlist strandslagen">
+			{% for strandslag in strandslagen %}
+				<li>
+				<h4><a href="{{ strandslag.link}}"> {{ strandslag.title }}</a></h4> 
+				{# print(strandslag) #}
+				<div class="tent-description"><p>{{ strandslag.excerpt(200) }}</p></div>
+				</li>
+			{%  endfor %}
+			</ul>
+	
+		</div>
+		
+		<div class="large-4 columns side-col">
+			
+			<div class="side-block weather-block">
+			<!-- het weerbericht, met Jan Pelleboer -->
+			{% include '_seatemp.twig' %}
+			{% include '_weather.twig' %}
+			<!-- einde van dit bulletin. -->
+			</div>
+			
+			<div class="side-block img-block">
+				<img src="{{ thumbnail(record.image, 287, 500,'r') }}" alt="{{ record.title }}" title="{{ record.title }}" />
+			</div>
+			
+			
+
+			<!-- Include small ads for devices -->
+			{% include '_small_adblock.twig' %}
+
+			<!-- Include Tweets -->
+			{# % include '_twitterlist.twig' % #}
+			
+		</div>
+</div>	
+	
+<!-- End Main Content -->
+
+    
+	{% include '_footer.twig' %}
+	
+				

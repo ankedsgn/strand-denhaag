@@ -1,0 +1,24 @@
+# This file defines the menus on the website. See the documentation for
+# details: http://docs.bolt.cm/menus
+
+main:
+  - label: Strandslagen
+    title: Bekijk de strandslagen
+    path: overzicht/strandslagen
+    class: first
+  - label: Strandtenten
+    title: Bekijk de strandtenten
+    path: overzicht/strandtenten
+#  - label: Met kinderen naar het strand
+#    title: Bekijk de strandslagen
+#    path: overzicht/kinderen
+  - label: Naaktstranden
+    title: Naar het overzicht van de naaktstranden
+    path: overzicht/naaktstranden
+  - label: Hondenstranden
+    title: Naar het overzicht van de hondenstranden
+    path: overzicht/honden
+  - label: Kaart van het strand
+    title: Bekijk de overzichtskaart
+    path: pagina/kaart-van-het-strand-van-den-haag
+

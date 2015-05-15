@@ -1,0 +1,104 @@
+{% include '_header.twig' %}
+	
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			
+			<h3>Strandtenten</h3>
+
+			
+			{% setcontent strandslagen ='strandslagen' orderby'id'%}				
+			
+				<ul class="block-grid strandtenten-grid large-block-grid-3">
+				{% for strandslag in strandslagen %}
+				<!-- li class=""><h3>{{ strandslag.title}}</h3> <h4>{{strandslag.name }}</h4></li -->
+				{% set related = strandslag.related(strandtenten) %}
+					{% for strandtent in related %}
+	    				<li class="strandtent-item {% for service in strandtent.taxonomy.services %}{{ service|lower|replace({' ':'-' }) }} {% endfor %}">
+	        				<a href="{{ strandtent.link }}"><img class="hide-for-small" src="{{ thumbnail(strandtent.image, 199, 140) }}" alt="{{ strandtent.title }}" title="{{ strandtent.title }}" /></a>
+	        				<h3><a href="{{ strandtent.link }}">{{ strandtent.title }}</a></h3> 
+	        				<h4><a href="{{ strandslag.link}}" title="Op welk strand zit deze tent?">{{ strandslag.title }}</a></h4>
+							<div class="tent-contact">
+	        					<a href="tel:{{ strandtent.phone }}">{{ strandtent.phone }}</a> 
+	        					{% if strandtent.website !="" %}/ <a target="_blank" href="{{ strandtent.website }}">{{ strandtent.website | slice(7,100) }}</a> {% endif %}
+	        				</div>
+	        					
+	        				<!-- div class="tent-description"><p>{{ strandtent.description }}</p></div -->
+	        				
+							<!-- div class="tent-flags">
+	        				
+	        				{% if strandtent.taxonomy.services is defined %}
+								{% for service in strandtent.taxonomy.services %}
+									{{ service }}{% if not loop.last %} | {% endif %}
+								{% endfor %}
+							{% endif %}       				
+	        				
+	        				</div -->
+	        				
+	    				</li>
+					{%  endfor %}
+				{%  endfor %}
+				</ul>
+			 		
+		</div>
+		
+		<div class="large-4 columns side-col">
+			
+			<div class="side-block weather-block">
+			<!-- het weerbericht, met Jan Pelleboer -->
+			{% include '_seatemp.twig' %}
+			{% include '_weather.twig' %}
+			<!-- einde van dit bulletin. -->
+			</div>
+			
+			<div class="side-block filter-block">
+				 <h3>Laat mij strandtenten zien met &hellip;</h3>
+				 <form class="strandtent-filter" method="get" action="">
+				 	<label for="wifi"><input id="wifi" type="checkbox" name="flag" value="wifi"><span class="checkbox"></span> Wifi</label>
+		         	<label for="kinderspeelplaats"><input id="kinderspeelplaats" type="checkbox" name="flag" value="kinderspeelplaats"><span class="checkbox"></span> Kinderspeelplaats</label></li>
+		         	<label for="parasols"><input id="parasols" type="checkbox" name="flag" value="parasol-verhuur"><span class="checkbox"></span> Verhuur parasols</label></li>
+		         	<label for="ligbed"><input id="ligbed" type="checkbox" name="flag" value="ligbed-verhuur"><span class="checkbox"></span> Verhuur bedjes</label></li>
+		         	<label for="buitendouche"><input id="buitendouche" type="checkbox" name="flag" value="buitendouche"><span class="checkbox"></span> Buitendouche</label></li>
+					<label for="winkel"><input id="winkel" type="checkbox" name="flag" value="winkel"><span class="checkbox"></span> Winkel</label></li>
+					<label for="verhuur"><input id="verhuur" type="checkbox" name="flag" value="verhuur-mogelijk"><span class="checkbox"></span> Verhuur voor feesten</label></li>
+					<label for="muziek"><input id="muziek" type="checkbox" name="flag" value="muziek"><span class="checkbox"></span> Live muziek</label></li>
+					<label for="volleybalnet"><input id="volleybalnet" type="checkbox" name="flag" value="volleybalnet"><span class="checkbox"></span> Volleybalnet</label></li>
+					<label for="verhardpad"><input id="verhardpad" type="checkbox" name="flag" value="verhard-pad"><span class="checkbox"></span> Verharde toegangsweg</label></li>
+					<label for="snackbar"><input id="snackbar" type="checkbox" name="flag" value="snackbar"><span class="checkbox"></span> Kleine snacks</label></li>
+					<label for="restaurant"><input id="restaurant" type="checkbox" name="flag" value="restaurant"><span class="checkbox"></span> Restaurant </label></li>
+					<label for="loungebedden"><input id="loungebedden" type="checkbox" name="flag" value="loungebedden"><span class="checkbox"></span> Zitzakken / loungebedden</label></li>
+				</ul>
+		        </form>
+			</div>
+			
+			
+
+			<!-- Include small ads for devices -->
+			{% include '_small_adblock.twig' %}
+
+			<!-- Include Tweets -->
+			{# % include '_twitterlist.twig' % #}
+			
+		</div>
+</div>	
+	
+<!-- End Main Content -->
+
+    
+	{% include '_footer.twig' %}
+	
+	
+				
+			
+			

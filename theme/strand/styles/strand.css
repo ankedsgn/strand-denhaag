@@ -1,0 +1,751 @@
+/* colors 
+
+bright blue: #049DBF
+dark blue: #016AAB
+purple: #AE08A9
+
+*/
+
+/* fonts */
+
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('../fonts/proximanova-semibold-webfont.eot');
+    src: url('../fonts/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-semibold-webfont.woff') format('woff'),
+         url('../fonts/proximanova-semibold-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-semibold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('../fonts/proximanova-semibolditalic-webfont.eot');
+    src: url('../fonts/proximanova-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-semibolditalic-webfont.woff') format('woff'),
+         url('../fonts/proximanova-semibolditalic-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-semibolditalic-webfont.svg#proxima_nova_rgbold_italic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('../fonts/proximanova-regular-webfont.eot');
+    src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('../fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-regular-webfont.svg#proxima_nova_ltbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'proxima_nova';
+    src: url('../fonts/proximanova-regitalic-webfont.eot');
+    src: url('../fonts/proximanova-regitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-regitalic-webfont.woff') format('woff'),
+         url('../fonts/proximanova-regitalic-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-regitalic-webfont.svg#proxima_nova_ltbold_italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+/* ----- */
+
+
+
+.logobar {
+	
+}
+
+.weerwidget {
+	
+}
+
+.main-row > div {
+	min-height: 600px;
+}
+
+.optie-col {
+	background: #b3b0b0;
+} 
+
+.map-col {
+	background: #6d6c6c;
+}
+
+.colofon-col {
+	background: #bdb9b9;
+}
+
+/* base styles */
+
+body {
+	background: #C2B799 url(../images/bg_body.gif) top left repeat;
+}
+
+h1, h2, h3, h4, h5, .subheader {
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	line-height: 1.1;
+	text-transform: none;
+}
+
+h1 {
+	font-size: 2rem;
+	line-height: 1.1;
+	text-transform: uppercase;
+	margin-bottom: .5em;
+	color: #049DBF;
+}
+
+h2 {
+	font-size: 1.7rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+	/* margin-top: 2em; */
+}
+
+h4 {
+	font-size: 1rem;
+	margin-bottom: 0;
+}
+
+p, ol, ul {
+	font-size: 0.8rem;
+	line-height: 1.5;
+}
+
+a {
+	color: #004351;
+}
+
+p a {
+	border-bottom: 1px dotted;
+}
+
+a.readmore {
+	color: #1595B5;
+	display: inline-block;
+	border-bottom: 1px dotted;
+}
+
+img{
+	display: block;
+}
+
+.intro {
+	margin: 1em 0;
+	line-height: 1.5;
+}
+
+ul.contentlist {
+	list-style: none;
+}
+
+.contentlist li {
+	border-bottom: 1px dashed #888;
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+}
+
+.main-col .block-grid h3 {
+	color: #000;
+	margin: 0.2em 0;
+}
+
+.block-grid h3 a {
+	color: #000;	
+}
+
+.block-grid h4 {
+	color: #0495B5;
+	font-size: 16px;
+	line-height: 1.1;
+	margin-top: 0px;
+}
+
+.block-grid h4 a {
+	color: #0495B5;
+}
+
+.intro, .intro p, .intro ul, intro ol {
+	font-size: 1rem;
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+}
+
+/* header */
+
+.logo-row {
+	background: #3B97BF url(../images/bg_logorow.jpg) top left no-repeat;
+	height: 83px;
+	xbox-shadow: 0px 1px 4px rgba(0,0,0,0.4);
+}
+
+.top-bar {
+	height: 38px;
+	line-height: 38px;
+	background: #62B9D4 url(../images/bg_top-bar.jpg) top left no-repeat;
+	margin-bottom: 1em;
+}
+
+.top-bar .name {
+	height: 38px;
+}
+
+.top-bar-section ul {
+	background: transparent;
+	
+}
+
+.top-bar-section ul li {
+	background: transparent;
+	
+}
+
+.top-bar-section li a:not(.button) {
+	line-height: 38px;
+	background: transparent;
+	color: #fff;
+	font-weight: normal;
+	text-shadow: 1px 1px 10px rgba(255,255,255,.2);
+}
+
+	.top-bar-section li a:hover:not(.button) {
+		background: #8eccd7;
+		color: #000;
+	}
+
+.top-bar-section ul li.active a {
+	color: #fff;
+	background: transparent;
+}
+
+.top-bar .toggle-topbar.menu-icon a span {
+	color: #000;
+	box-shadow: 0 10px 0 1px #000, 0 16px 0 1px #000, 0 22px 0 1px #000;
+}
+
+
+#logo {
+	margin: 1em 0 0 0;
+}
+
+#logo h2,
+#logo p {
+	margin: 0;
+	line-height: 1;
+}
+
+.body-home #logo h2 {
+	display: none;
+}
+
+#logo h2 a {
+	color: #fff;
+	font-weight: bold;
+	font-size: 32px;
+}
+
+#logo h2 span {
+	color: #fff;
+	font-weight: normal;
+	margin-left: .1em;
+}
+
+#logo h2 a:hover {
+	text-shadow: 0px 0px 10px rgba(0,255,255,.4)
+}
+
+#logo p {
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	color: #fff; 
+}
+
+.strandnav {
+	height: 1.5em ;
+	border-bottom: 1px dashed #888;
+	margin: 1em 0;
+}
+
+.strandnav a {
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	color: #000;
+	font-size: 14px;
+}
+
+.strandnav a.prev {
+	float: right;
+	
+}
+
+
+
+/* weather */
+
+.weather-block {
+	height: 102px;
+	margin-top: 1em;
+}
+
+.weerwidget {
+	padding-top: 1em;
+}
+
+.weather-day,
+.sea_temp {
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	text-align: center;
+}
+
+.sea_temp {
+	padding-top: 21px;
+}
+
+.sea_temp table {
+	border: 0;
+	margin-bottom: 7px;
+}
+
+.sea_temp table td{
+	background: #C2B799 url(../images/bg_body.gif) top left repeat;
+}
+
+.weather-day .temp {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.weather-day p,
+.sea_temperature_name {
+	font-size: 15px;
+	
+}
+
+/* search */
+
+#searchform {
+	border-bottom: 1px dashed #888;
+	margin-bottom: 0;
+}
+
+#searchform input {
+	display: inline-block;
+}
+
+#searchform input[type='search']{
+	background: #E6DDC8;
+	padding: 3px 10px;
+	height: 1.8em;
+	margin-right: 5px;
+}
+
+#searchform input[type='submit']{
+	background: none;
+	border:none;
+	color: #fff;
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	padding: 0;
+}
+
+/*mobile nav */
+
+.mobile-nav-row {
+	padding-top: 2em;
+}
+
+ul.mobile-nav {
+	list-style: none;
+}
+
+ul.mobile-nav li{
+	list-style: none;
+}
+
+ul.mobile-nav li .button {
+	background:  #8CB3A8 url(../images/bg_logobalk.gif) top left repeat;
+	border: none;
+	border-radius: 10px;
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	font-size: 19px;
+	font-weight: normal;	
+}
+
+ul.mobile-nav li .button:hover {
+	background: #65A59D url(../images/bg_knop_hover.gif) top left repeat;
+}
+
+/* main blocks */
+
+.content-block {
+	margin: 2em 0;
+}
+
+.content-block ul {
+	list-style: none;
+}
+
+/* side blocks */
+
+.side-block {
+	padding: 0.2em 0.5em;
+	margin-bottom: 1em;
+	overflow: hidden;
+}
+
+.side-block h3 {
+	padding-bottom: .2em;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	color: #000;
+	line-height: 1.1;
+	border-bottom: 1px dashed #888;
+}
+
+.side-block ul {
+	list-style: none;
+}
+
+ul.tweet_list li{
+	margin-bottom: 0.5em;
+}
+
+.ad-block {
+	text-align: center;
+	padding: 0;
+}
+
+
+.banner-block {
+	padding-top: .5em;
+	text-align: right;
+}
+
+/* homepage */
+ h1.sitename {
+	color: #fff;
+	font-size: 4em;	 
+ }
+ 
+ h1.sitename span {
+	 text-transform: capitalize;
+	 font-weight: normal;
+	 margin-left: -5px;
+ }
+ 
+.body-home .intro-row {
+	background: #E2DDC6;
+	height: 330px; 
+}
+
+.body-home .intro {
+	 margin: 0;
+	 padding: 1em;
+}
+
+.row .columns .intro-image {
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+.intro-image img {
+	max-width: none;
+	max-height: 100%;
+}
+ 
+.intro ul {
+	 list-style: none;
+	 margin-bottom: 0;
+}
+
+.intro ul li a:after {
+	content: "\00BB";
+	margin-left: 5px;
+}
+
+.main-col h2 {
+	margin: 1em 0;
+}
+
+.main-col h3 {
+	margin: 1em 0;
+}
+
+/*strandslag */
+
+.body-strandslag h1 {
+	font-size: 28px;
+	line-height: 1.1;
+	text-transform: uppercase;
+	margin-bottom: .5em;
+	color: #049DBF;
+}
+
+.body-strandslag h1 .subheader {
+	display: block;
+	font-size: 35px;
+	text-transform: none;
+	color: #000;
+	line-height: .95;
+	margin: 0;
+}
+
+.strandheader .label {
+	background:#e6e6c2;
+	font-size: 14px;
+	color: #222;
+	font-weight: normal;
+	margin-right: 1em;
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	padding-top: 4px;
+}
+
+.smallmap {
+	height: 278px;
+	height: auto;
+	width: 100%;
+	margin: 1em 0 0;
+	overflow: hidden;
+}
+
+.body-strandslag .strandintro {
+	background: #E2DDC6;
+	padding: 1em;
+	margin-top: 0;
+}
+
+.content-block h3 {
+	line-height: 1.1;
+	font-size: 24px;
+	padding-bottom: .2em;
+	border-bottom: 1px dashed #888;
+}
+
+.content-block h3 .label {
+	font-size: 13px;
+	vertical-align: top;
+	float: right;
+	transform:rotate(4deg);
+		-ms-transform:rotate(4deg); /* IE 9 */
+		-webkit-transform:rotate(4deg); /* Safari and Chrome */
+}
+
+.strandtent-block h4, .tent-contact a{
+	color: #016AAB; /* was paars #AE08A9; */
+}
+
+.strandtent-block h4 {
+	margin-bottom: 0em;
+}
+
+ul.strandtenten li {
+	margin-bottom: 1em;
+}
+
+.tent-description p {
+	margin: .5em 0;
+	font-size: 13px;
+}
+
+.tent-flags {
+	font-size: 11px;
+	color: #555;
+	line-height: 1.5;
+}
+
+/* strandtent */
+.body-strandtent .intro-row {
+	background: #B1D7CC;
+}
+
+/* footer */
+.footer-row {
+	background:  #8CB3A8 url(../images/bg_logobalk.gif) top left repeat;
+}
+
+.footer-col {
+	padding: .5em 0 .2em;
+}
+
+.footer-col p {
+	font-family: "proxima_nova", "helvetica neue", arial, sans-serif;
+	font-size: 11px;
+	color: #000;
+}
+
+.footer-col h5 {
+	font-weight: normal;
+	font-size: 13px;
+	color: #fff;
+}
+
+.footer-col h5 span {
+	font-size: 18px;
+}
+
+.footer-col a {
+	color: #000;
+}
+
+.footer-bottom-row {
+	background: #62B9D4;
+	height: 1em;
+}
+
+/* search */
+
+ul.searchresults {
+	list-style: none;
+}
+
+ul.searchresults p{
+	font-size: 13px;
+    margin: 0.5em 0; 
+}
+
+/*strandtenten overzicht */
+
+.filter-block {
+	background: #049DBF;
+}
+
+
+.filter-block form label {
+	margin-bottom: 1em;
+	color: #000;
+	font-size: 13px;
+	font-weight:normal;
+} 
+
+
+.block-grid li {
+	margin-bottom: 2em;
+}
+
+
+.block-grid li img {
+	margin-bottom: .8em;
+	clear:both;
+}
+
+/*----------------------------------------------
+MEDIA QUERY TIJD
+------------------------------------------------*/
+
+
+@media only screen and (max-width: 43em) { /* topbar breakingpoint */
+ 	
+ 	.top-bar-section li a:not(.button) {
+	    background: #61B8D6 /*#049DBF*/;
+	    line-height: 23px;
+	    color: #000;
+	    font-size: 16px;
+	    
+	    
+	}
+	
+	.top-bar-section ul li.active a {
+	    background: #8ECCD7;/*#8ECCD7;*/
+	    line-height: 23px;
+	    color: #000;
+	    font-weight: bold;
+	}
+	
+	.top-bar-section li a:hover:not(.button) {
+    	color: #000;
+    	background: #8ECCD7;
+	}
+	
+	.top-bar.expanded .title-area {
+    	background: #61B8D6;
+	}
+	
+	.top-bar.expanded .toggle-topbar a span {
+		box-shadow: 0 10px 0 1px #000, 0 16px 0 1px #000, 0 22px 0 1px #000;
+	}
+	.top-bar.expanded .toggle-topbar a {
+		color: #000;
+	}
+}
+
+/*----------------------------------------------
+MEDIA QUERY TIJD
+------------------------------------------------*/
+
+
+@media only screen and (max-width: 769px) { /*alleen voor tablet staand screen */
+
+   .body-home .intro-row {
+	    height: 400px;
+    }
+
+}
+/*----------------------------------------------
+MEDIA QUERY TIJD
+------------------------------------------------*/
+
+
+@media only screen and (max-width: 560px) { /*alleen voor small screen */
+
+    #searchform {
+	    border-bottom: none;
+    }
+    
+    h1.sitename {
+	    font-size: 3em;
+    }
+    
+     .row .columns .intro-image{
+	    height: 200px;
+    }
+    .intro-image img {
+	    max-height: none;
+	    max-width: 100%;
+    }
+    
+    .body-home .intro-row {
+	    height: auto;
+    }
+
+}
+
+
+/*----------------------------------------------
+MEDIA QUERY TIJD
+------------------------------------------------/*
+
+
+/* only on smallest screens - fix for mobile ads */
+
+@media only screen and (max-width: 365px) {
+
+    .ad-block {
+    margin: 0 -0.9375em 1em;
+    }
+    
+	h1.sitename {
+	    font-size: 2em;
+    }
+}
+
+
+
+/* colors 
+
+bright blue: #049DBF
+dark blue: #016AAB
+purple: #AE08A9
+
+*/

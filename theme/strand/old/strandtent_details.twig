@@ -1,0 +1,75 @@
+{% include '_header.twig' %}
+
+<!-- Main Blog Content -->
+	
+	<div class="row header-row" >
+		<div class="large-8 columns">
+			<form>
+				<label for="zoek" class="">Label</label>
+				<input type="text" id="zoek" class="large-4" placeholder="Zoek">
+			</form>
+		</div>
+			
+			<!-- het weerbericht, met Jan Pelleboer -->
+			
+			{% include '_seatemp.twig' %}
+			
+			{% include '_weather.twig' %}
+			
+			<!-- einde van dit bulletin. -->
+	</div>
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			<div class="strandheader">
+				<h1>Overzicht van Strandtenten<span class="subheader">Welke strandtent zit waar?</span></h1>
+			</div>
+			
+			{% for record in records %}
+			<article>
+
+            <h3><a href="{{ record.link }}">{{ record.title }}</a></h3>
+ 
+            {% if record.image!="" %}
+                <div class="four columns imageholder">
+                    <a href="{{ image(record.image) }}">
+                        <img src="{{ thumbnail(record.image, 400, 260) }}">
+                    </a>
+                </div>
+            {% endif %}
+
+            {# display something introduction-like.. #}
+            {% if record.introduction %}
+                {{ record.introduction }}
+            {% elseif record.teaser %}
+                {{ record.teaser }}
+            {% else %}
+                <p>{{ record.excerpt(300) }}</p>
+            {% endif %}
+
+			</article>
+
+					
+			
+						
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+
+			{% include '_small_adblock.twig' %}
+			
+			{% include '_twitterlist.twig' %}
+			
+		</div>
+	</div>	
+	
+<!-- End Main Content -->
+
+    {% include '_aside.twig' %}	
+	
+
+<!-- End Main Content and Sidebar -->
+
+	{% include '_footer.twig' %}

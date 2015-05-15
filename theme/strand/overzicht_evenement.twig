@@ -1,0 +1,63 @@
+		{% include '_header.twig' %}
+	
+	<div class="row header-row" >
+		<div class="large-4 push-8 columns"> 
+			<!-- Searchbox -->
+			{% include '_searchbox.twig' %}
+		</div>
+		
+		<div class="large-8 pull-4 columns">
+			
+		</div>
+		
+	</div> <!-- /header-row -->
+  
+	<div class="row main-row ">
+		<div class="large-8 columns main-col">
+			<h3>Evenementen</h3>
+			{% setcontent evenementen = 'evenementen' %}				
+		
+			<ul class="contentlist strandslagen">
+			{% for evenement in evenementen %}
+				<li>
+				<h4><a href="{{ evenement.link}}"> {{ evenement.title }}</a></h4> 
+				{# print(evenement) #}
+				<div class="tent-description"><p>{{ evenement.datum|localdate("%A %d %B %G") }}</p></div>
+				<div class="tent-description"><p>{{ evenement.excerpt(700) }}</p></div>
+				</li>
+			{%  endfor %}
+			</ul>
+	
+		</div>
+		
+		<div class="large-4 columns side-col">
+			
+			<div class="side-block weather-block">
+			<!-- het weerbericht, met Jan Pelleboer -->
+			{% include '_seatemp.twig' %}
+			{% include '_weather.twig' %}
+			<!-- einde van dit bulletin. -->
+			</div>
+			
+			<div class="side-block img-block">
+				<img src="{{ thumbnail(record.image, 287, 500,'r') }}" alt="{{ record.title }}" title="{{ record.title }}" />
+			</div>
+			
+{{ record.datepublish|localdate("%e %B %Y") }}
+
+
+			<!-- Include small ads for devices -->
+			{% include '_small_adblock.twig' %}
+
+			<!-- Include Tweets -->
+			{# % include '_twitterlist.twig' % #}
+			
+		</div>
+</div>	
+	
+<!-- End Main Content -->
+
+    
+	{% include '_footer.twig' %}
+	
+				
