@@ -2,11 +2,11 @@
 # SQLite, only the databasename is required, while MySQL and PostgreSQL also
 # require username, password and perhaps a hostname.
 # If you're trying out Bolt, just keep it set to SQLite for now.
-database:
-  driver: mysql
-  username: anke_strand
-  password: strandbal
-  databasename: anke_stranddenhaag
+# database:
+#   driver: mysql
+#   username: XXX
+#   password: XXX
+#   databasename: XXX
 
 # The name of the website
 sitename: Strand Den Haag
