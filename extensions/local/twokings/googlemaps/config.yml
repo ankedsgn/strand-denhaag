@@ -1,0 +1,75 @@
+# Configuration
+# -------------
+#
+# Add javascript libraries if necessary.
+#
+googlemaps     : https://maps.googleapis.com/maps/api/js?sensor=false
+jquery         : http://code.jquery.com/jquery-2.0.3.min.js
+gmap3          : /extensions/local/twokings/googlemaps/assets/gmap3v5.1.1/gmap3.min.js
+
+add_googlemaps : true
+add_jquery     : false # use add_jquery from "app/config/config.yml" .
+add_gmap3      : true
+
+# If `verbose` is set to `true`, it will print problems if found.
+# Set this to `false` on production servers.
+verbose: true
+
+
+# Instructions
+# ------------
+#
+# Define your data for your application. Use the same syntax as the following
+# example. Make sure you do not use the same name as one of the abovementioned
+# config keys (e.g. do not re-use `include_gmaps` as a name).
+#
+# In your twig template, simply add
+#
+#     {{ googlemap("example") }}
+#
+# in order to get the map.
+#
+# Duplicate the `example.js` and `example.css` files in order to define your
+# own styles and behaviour. The base path used is
+#
+#     path/to/app/extensions/GoogleMap/assets/
+#
+# If your map name is `example`, use `#example` in your assets.
+# Acquire json data via
+#
+#     /bolt/googlemap/json?name=example
+#
+# You can get
+#
+#     /app/extensions/GoogleMap/assets/example/example.json
+# 
+# for the same JSON data as in the gmap3 example at 
+#
+#     http://gmap3.net/en/pages/19-demo/
+#
+# Define contenttypes as <contenttype-name>: <field-name>, where <field-name>
+# contains the geolocation value.
+#
+example: # the name to be used in your twig template {{ googlemap("example") }}
+    contenttypes:
+        kitchensinks: geolocation # contenttype name with geolocation property field name
+    js: example/example.js
+    css: example/example.css
+
+scala:
+    contenttypes: 
+        projecten: geolocation
+    js: scala/scala.js
+    css: scala/scala.css
+
+designkwartier:
+    contenttypes: 
+        locaties: adres
+    js: designkwartier/example.js
+    css: designkwartier/example.css
+
+strand:
+    contenttypes:
+        strandslagen: geolocation
+    js: strand/strand.js
+    css: strand/strand.css

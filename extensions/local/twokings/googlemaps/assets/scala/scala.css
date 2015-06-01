@@ -1,0 +1,58 @@
+/* -----------------------------------------------------------------------------
+ * This fixes some issues with Bootstrap and Foundation.
+ *
+ * Sources:
+ * http://stackoverflow.com/questions/16708324/google-maps-infowindow-close-button-hidden
+ * https://github.com/twbs/bootstrap/issues/2410
+ * -----------------------------------------------------------------------------
+ */
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+    max-width: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * InfoWindow scrollbar fix.
+ *
+ * Source:
+ * http://www.canbike.ca/information-technology/2013/11/01/firefox-infowindow-scrollbar-fix-google-maps-api-v3.html
+ * -----------------------------------------------------------------------------
+ */
+.noscrollbar {
+    line-height : 1.35 !important;
+    overflow : hidden;
+    white-space : nowrap;
+}
+
+/* -------------------------------------------------------------------------- */
+
+
+#scala {
+    height: 600px;
+}
+
+#scala div {
+    /* line-height: normal !important; */
+}
+
+#scala div .cluster {
+    color : #FFF;
+    background-color: rgba(0,0,0,0.6);
+
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+
+    border-radius: 50%;
+}
+#scala div .cluster.cluster-1 {
+    background-color: rgba(0,0,0,0.6);
+}
+#scala div .cluster.cluster-2 {
+    background-color: rgba(0,0,0,0.8);
+}
+#scala div .cluster.cluster-3 {
+    background-color: rgba(0,0,0,1);
+}

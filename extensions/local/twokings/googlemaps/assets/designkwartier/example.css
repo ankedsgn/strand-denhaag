@@ -1,0 +1,87 @@
+/* -----------------------------------------------------------------------------
+ * This fixes some issues with Bootstrap and Foundation.
+ *
+ * Sources:
+ * http://stackoverflow.com/questions/16708324/google-maps-infowindow-close-button-hidden
+ * https://github.com/twbs/bootstrap/issues/2410
+ * -----------------------------------------------------------------------------
+ */
+img[src*="gstatic.com/"], img[src*="googleapis.com/"] {
+    max-width: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * InfoWindow scrollbar fix.
+ *
+ * Source:
+ * http://www.canbike.ca/information-technology/2013/11/01/firefox-infowindow-scrollbar-fix-google-maps-api-v3.html
+ * -----------------------------------------------------------------------------
+ */
+.noscrollbar {
+    line-height : 1.35 !important;
+    overflow : hidden;
+    white-space : nowrap;
+}
+
+/* -------------------------------------------------------------------------- */
+
+#designkwartier {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 300px;
+    top: 70px;
+}
+
+#designkwartier .noscrollbar {
+    padding : 10px;
+    max-width : 500px;
+}
+
+#designkwartier .noscrollbar div {
+    /* line-height: normal ! important; */
+}
+
+#designkwartier .noscrollbar .infowindow-titel {
+    margin-bottom: 0; /* rem support? */
+}
+
+#designkwartier .noscrollbar .infowindow-titel span {
+    font-size: inherit;
+}
+
+#designkwartier .noscrollbar p {
+    text-wrap: normal;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+#designkwartier .infowindow-adres,
+#designkwartier .infowindow-teaser,
+#designkwartier .infowindow-readmore {
+    font-size: 12px;
+}
+
+#designkwartier .infowindow-readmore {
+    margin-bottom: 0;
+}
+
+.infowindow-deelnemers {
+    margin:0 0 1em 0;
+    font-size:1em;
+}
+
+.infowindow-deelnemers .first {
+    text-transform: uppercase;
+    font-size:1.25em;
+    margin-left:0;
+    list-style: none;
+    font-family: "Interstate Black Cond","Arial Narrow",sans-serif;
+}
+
+.infowindow-deelnemers li {
+    font-size:0.9375em;
+    font-family: Georgia,"Times New Roman",serif;
+    margin-left:1em;
+}

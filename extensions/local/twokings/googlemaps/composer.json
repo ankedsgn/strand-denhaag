@@ -1,0 +1,20 @@
+{
+    "name": "twokings/GoogleMaps",
+    "description": "Google Maps extensie voor Designkwartier.com",
+    "type": "bolt-extension",
+    "require": {
+        "bolt/bolt": ">=2.0.0,<3.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {"name": "Xiao-Hu Tai", "email": "xiao@twokings.nl"}
+    ],
+    "autoload": {
+        "files": [
+            "init.php"
+        ],
+        "psr-4": {
+            "Bolt\\Extension\\TwoKings\\GoogleMaps\\": ""
+        }
+    }
+}
